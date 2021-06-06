@@ -44,9 +44,16 @@ async def on_member_join(member):
 async def on_message(message):
     if message.author == client.user:
         return
-    if message.content.startswith("-are u der?"):
-        print("are u der---detected")
-        await message.channel.send("yessir")
+
+    if message.content.lower().containt("fight club"):
+        await message.channel.send("DO NOT FORGET THE FIRST RULE!")
+
+    if message.content.startswith("-hello"):
+        embedVar = discord.Embed(title="Title", description="Desc", color=0x00ff00)
+        embedVar.add_field(name="Field1", value="hi", inline=False)
+        embedVar.add_field(name="Field2", value="hi2", inline=False)
+        await message.channel.send(embed=embedVar)
+    
         
     if message.content.startswith("!play"):
         _words = message.content.split(" ")

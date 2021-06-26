@@ -61,7 +61,7 @@ async def on_message(message):
         id_ = msg_.id
         for emo in emojis:
             await msg_.add_reaction(emo)
-        time.sleep(10)
+        time.sleep(45)
         getmsg = await message.channel.fetch_message(id_)
         reaction = getmsg.reactions
         print(type(reaction))

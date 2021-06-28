@@ -2,6 +2,7 @@ import discord
 from discord import member
 import time
 import os
+import reddit
 # from dotenv import load_dotenv
 # import random
 # from discord.ext import commands
@@ -54,6 +55,11 @@ async def on_message(message):
 
     if message.content.startswith("-u der?"):
         await message.channel.send("yessir")
+    
+    if message.content.startswith("-cursed"):
+        url = reddit.getNewPost()
+        # print(url)
+        await message.channel.send(url)
 
     if message.content.startswith("-poll"):
         # emojis = []

@@ -1,13 +1,12 @@
 import discord
 from discord import member
 import time
-# import os
+import os
 # from dotenv import load_dotenv
 # import random
 # from discord.ext import commands
 # load_dotenv('.env')
 
-# TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 
 
 intents = discord.Intents.default()
@@ -15,7 +14,6 @@ intents.members = True
 
 client = discord.Client(intents=intents)
 # client = commands.Bot(command_prefix="-")
-
 
 RULES = "Gentlemen, welcome to Fight Club. \nThe first rule of Fight Club is: You do not talk about Fight Club. \nThe second rule of Fight Club is: You do not talk about Fight Club. \nThird rule of Fight Club: Someone yells \"Stop!\", goes limp, taps out, the fight is over. \nFourth rule: Only two guys to a fight. Fifth rule: One fight at a time, fellas. \nSixth rule: No shirts, no shoes. \nSeventh rule: Fights will go on as long as they have to. \nAnd the eighth and final rule: If this is your first night at Fight Club, you have to fight."
 REACTIONS = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"]
@@ -49,6 +47,13 @@ async def on_member_join(member):
 async def on_message(message):
     if message.author == client.user:
         return
+
+    # if message.content.startswith("-help me"):
+    #     stepBro = User.id('tylerDurden#3685').format(message)
+    #     await message.channel.send("@tylerDurden help me I am stuck")
+
+    if message.content.startswith("-u der?"):
+        await message.channel.send("yessir")
 
     if message.content.startswith("-poll"):
         # emojis = []
@@ -128,4 +133,6 @@ async def on_message(message):
 #     await ctx.send("general Kenobi")
 
 
+# TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 client.run('ODQ4MjI3MTQ2MTI3MTE0MjUw.YLJjFg.qgIaCIi37dSGNk0n-DBaJBosXT8')
+# client.run(TOKEN)

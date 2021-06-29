@@ -6,8 +6,10 @@ reddit = praw.Reddit(
     user_agent="testscript by u/RagingBox08",
     username="RagingBox08",
 )
-def getNewPost():
-    subreddit = reddit.subreddit("cursedcomments")
+def getNewPost(rslash):
+    # rslash = input("enter the name of the subreddit: ")
+    subreddit = reddit.subreddit(rslash)
+    print(subreddit.title)
     for submission in subreddit.new(limit=1):
         print(submission.url)
-        return submission.url
+        return submission.url, subreddit.title

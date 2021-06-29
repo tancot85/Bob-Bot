@@ -53,15 +53,19 @@ async def on_message(message):
     #     stepBro = User.id('tylerDurden#3685').format(message)
     #     await message.channel.send("@tylerDurden help me I am stuck")
 
-    if message.content.startswith("-u der?"):
+    if message.content.startswith("u der?"):
         await message.channel.send("yessir")
     
-    if message.content.startswith("-cursed"):
-        url = reddit.getNewPost()
+    if message.content.startswith("!reddit get: "):
+        nxt = message.content.split(":")
+        print(nxt)
+        rslash = nxt[1].strip()
+        url,title  = reddit.getNewPost(rslash)
         # print(url)
+        await message.channel.send("From " + title+": ")
         await message.channel.send(url)
 
-    if message.content.startswith("-poll"):
+    if message.content.startswith("!poll"):
         # emojis = []
         nxt = message.content.split(",")
         nxt[0] = nxt[0].split(" ")[1]
@@ -101,7 +105,7 @@ async def on_message(message):
                 winning_msg = winning_msg + i + ", "
             await message.channel.send(winning_msg)
 
-    if message.content.startswith("-play"):
+    if message.content.startswith("!play"):
         _words = message.content.split(" ")
         print("words", _words)
         nxt = _words[1]

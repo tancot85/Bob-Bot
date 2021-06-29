@@ -74,14 +74,36 @@ async def on_message(message):
         embedVar.add_field(name="Field2", value="hi2", inline=False)
         await message.channel.send(embed=embedVar)
 
-    if message.content.startswith(">reddit get: "):
-        nxt = message.content.split(":")
+    if message.content.startswith(">reddit"):
+        nxt = message.content.split(" ")
         print(nxt)
-        rslash = nxt[1].strip()
-        url, title = reddit.getNewPost(rslash)
+        if len(nxt) == 2:
+            rslash = nxt[1]
+            url,title = reddit.getNewPost(rslash)
+            await message.channel.send("From " + title+": ")
+            await message.channel.send(url)
+        elif len(nxt) == 3 :
+            rslash = nxt[1]
+            if nxt[2] == "top" :
+                url,title = reddit.getTopPost(rslash)
+                await message.channel.send("From " + title+" top post: ")
+                await message.channel.send(url)
+            elif nxt[2] == "new":
+                url,title = reddit.getNewPost(rslash)
+                await message.channel.send("From " + title+": ")
+                await message.channel.send(url)
+            elif nxt[2] == "hot":
+                url,title = reddit.getNewPost(rslash)
+                await message.channel.send("From " + title+" hotest post: ")
+                await message.channel.send(url)
+            else:
+                await message.channel.send("error in command")
+
+
+
         # print(url)
-        await message.channel.send("From " + title+": ")
-        await message.channel.send(url)
+        # await message.channel.send("From " + title+": ")
+        # await message.channel.send(url)
 
     if message.content.startswith(">poll"):
         # emojis = []

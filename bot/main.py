@@ -9,7 +9,6 @@ import reddit
 # load_dotenv('.env')
 
 
-
 intents = discord.Intents.default()
 intents.members = True
 
@@ -40,7 +39,19 @@ async def on_member_join(member):
     print("joined")
     await member.edit(nick="tylerDurden")
     print("rule sent")
-    await member.send(content=RULES)
+    # await member.send(content=RULES)
+    embedVar = discord.Embed(
+        title="Gentlemen, welcome to Fight Club.", description="", color=0x0000FF)
+    embedVar.add_field(name="The first rule of Fight Club is:", value="You do not talk about Fight Club.", inline=False)
+    embedVar.add_field(name="The second rule of Fight Club is", value="You do not talk about Fight Club!", inline=False)
+    embedVar.add_field(name="Third rule of Fight Club", value="Someone yells \"Stop!\", goes limp, taps out, the fight is over", inline=False)
+    embedVar.add_field(name="Fourth rule", value="Only two guys to a fight", inline=False)
+    embedVar.add_field(name="Fifth rule", value="One fight at a time, fellas", inline=False)
+    embedVar.add_field(name="Sixth rule", value="No shirt, no shoes", inline=False)
+    embedVar.add_field(name="Seventh rule", value="Fights will go on as long as they have to", inline=False)
+    embedVar.add_field(name="The eighth and final rule", value="If this is your first night at Fight Club, you have to fight.", inline=False)
+    await member.send(embed=embedVar)
+    
     # member.nick = "tylerDurden"
 
 
@@ -55,12 +66,19 @@ async def on_message(message):
 
     if message.content.startswith("u der?"):
         await message.channel.send("yessir")
-    
+
+    if message.content.startswith('>hello'):
+        embedVar = discord.Embed(
+            title="Title", description="Desc", color=0x00ff00)
+        embedVar.add_field(name="Field1", value="hi", inline=False)
+        embedVar.add_field(name="Field2", value="hi2", inline=False)
+        await message.channel.send(embed=embedVar)
+
     if message.content.startswith(">reddit get: "):
         nxt = message.content.split(":")
         print(nxt)
         rslash = nxt[1].strip()
-        url,title  = reddit.getNewPost(rslash)
+        url, title = reddit.getNewPost(rslash)
         # print(url)
         await message.channel.send("From " + title+": ")
         await message.channel.send(url)
@@ -84,7 +102,7 @@ async def on_message(message):
         max_ = 1
         winner = ""
         winners = []
-        j=0
+        j = 0
         for react in reaction:
             if react.count > max_:
                 max_ = react.count

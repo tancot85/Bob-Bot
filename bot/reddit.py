@@ -1,8 +1,9 @@
 import praw
+import os
 reddit = praw.Reddit(
-    client_id="6E9DNKh0DVWa2g",
-    client_secret="EqChbA7105ZW9f6B3gFghGC2bDKScg",
-    password="Magha@702",
+    client_id=os.environ("Client_ID"),
+    client_secret=os.environ("Client_Secret"),
+    password=os.environ("pass"),
     user_agent="testscript by u/RagingBox08",
     username="RagingBox08",
 )

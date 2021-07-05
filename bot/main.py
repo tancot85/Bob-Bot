@@ -101,7 +101,7 @@ async def on_message(message):
         embedVar.add_field(name="Field2", value="hi2", inline=False)
         await message.channel.send(embed=embedVar)
 
-    if message.content.startswith(">reddit"):
+    if message.content.startswith(">r/"):
         nxt = message.content.split(" ")
         print(nxt)
         if len(nxt) == 2:

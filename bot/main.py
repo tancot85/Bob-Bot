@@ -19,7 +19,7 @@ client = discord.Client(intents=intents)
 RULES = "Gentlemen, welcome to Fight Club. \nThe first rule of Fight Club is: You do not talk about Fight Club. \nThe second rule of Fight Club is: You do not talk about Fight Club. \nThird rule of Fight Club: Someone yells \"Stop!\", goes limp, taps out, the fight is over. \nFourth rule: Only two guys to a fight. Fifth rule: One fight at a time, fellas. \nSixth rule: No shirts, no shoes. \nSeventh rule: Fights will go on as long as they have to. \nAnd the eighth and final rule: If this is your first night at Fight Club, you have to fight."
 REACTIONS = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"]
 # reactions = [":hand_splayed:", ":hand_fist:", ":v:"]
-RPS = ["✊","🖐️", "✌️"]
+RPS = ["✊", "🖐️", "✌️"]
 
 
 def createMsg(nxt):
@@ -95,11 +95,11 @@ async def on_message(message):
         await message.channel.send("yessir")
 
     if message.content.startswith('>hello'):
-        embedVar = discord.Embed(
-            title="Title", description="Desc", color=0x00ff00)
-        embedVar.add_field(name="Field1", value="hi", inline=False)
-        embedVar.add_field(name="Field2", value="hi2", inline=False)
-        await message.channel.send(embed=embedVar)
+            # embedVar = discord.Embed(
+            #     title="Hello There", description="General Kenobi", color=0x00ff00)
+            # embedVar.add_field(name="Field1", value="hi", inline=False)
+            # embedVar.add_field(name="Field2", value="hi2", inline=False)
+        await message.channel.send("Hello there")
 
     if message.content.startswith(">r/"):
         nxt = message.content.split(" ")

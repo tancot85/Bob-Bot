@@ -198,5 +198,5 @@ async def on_message(message):
         print("out of the loop")
 
 
-client.run(os.environ("DISCORD_BOT_TOKEN"))
+client.run(os.environ.get("DISCORD_BOT_TOKEN"))
 # client.run(TOKEN)

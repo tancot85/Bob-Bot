@@ -93,7 +93,8 @@ async def on_message(message):
 
     if message.content.startswith("u der?"):
         await message.channel.send("yessir")
-
+    if message.content == 'help':
+        await message.channel.send("step brother help im stuck")
     if message.content.startswith('>hello'):
             # embedVar = discord.Embed(
             #     title="Hello There", description="General Kenobi", color=0x00ff00)

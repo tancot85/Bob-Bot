@@ -26,7 +26,7 @@ def createMsg(nxt):
     msg = "Add reactoins:\n"
     emojis = []
     for i in range(len(nxt)):
-        msg = msg + str(i) + ". " + nxt[i] + "\n"
+        msg = msg + str(i+1) + ". " + nxt[i] + "\n"
         emojis.append(REACTIONS[i])
     return msg, emojis
 
